@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
+import java.util.Scanner;
 
 public class webCrawler {
     public static void main(String args[])
@@ -24,7 +25,10 @@ public class webCrawler {
 
         List<String> dirList = getFile("C:/Users/Nathan/Downloads/directory-list-2.3-big.txt");
 
-        List<String> allValidDir = getAllDir(dirList,"https://www.bbc.com", true);
+        System.out.println("Enter a website URL:");
+        String websiteInput = new Scanner(System.in).nextLine();
+
+        List<String> allValidDir = getAllDir(dirList,websiteInput, true);
 
         //for(int i = 0; i< allValidDir.size(); i++){
         //    System.out.println(allValidDir.get(i));
