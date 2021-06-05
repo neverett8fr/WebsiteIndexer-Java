@@ -40,6 +40,7 @@ public class webCrawler {
         //    System.out.println(allValidDir.get(i));
         //}
 
+        System.out.println("Finished!");
 
 
 
