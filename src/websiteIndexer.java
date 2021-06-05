@@ -73,6 +73,11 @@ public class websiteIndexer {
                     System.out.println(website + "/" + dictionary.get(i));
                     output.add(dictionary.get(i));
 
+                    //float x = 100;
+                    //x=x/dictionary.size();
+                    //x = x*i;
+                    //System.out.println(x);
+
                     if (getSubDir) {
                         output.addAll(getAllDir(dictionary, website + "/" + dictionary.get(i), true, true, countDeep));
                     }
