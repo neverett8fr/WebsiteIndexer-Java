@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
 
@@ -25,6 +26,10 @@ public class webCrawler {
 
         List<String> allValidDir = getAllDir(dirList,"https://www.google.com");
 
+        //for(int i = 0; i< allValidDir.size(); i++){
+        //    System.out.println(allValidDir.get(i));
+        //}
+
 
 
 
@@ -32,10 +37,11 @@ public class webCrawler {
 
     public static List<String> getAllDir(List<String> dictionary, String website){
 
-        List<String> output = null;
+        List<String> output = new ArrayList<>();
 
         for (int i = 0; i < dictionary.size(); i++){
             if(getDirExists(website, dictionary.get(i))){
+                System.out.println(website + "/"+dictionary.get(i));
                 output.add(dictionary.get(i));
             }
         }
