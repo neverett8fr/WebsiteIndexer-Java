@@ -24,7 +24,7 @@ public class webCrawler {
 
         List<String> dirList = getFile("C:/Users/Nathan/Downloads/directory-list-2.3-big.txt");
 
-        List<String> allValidDir = getAllDir(dirList,"https://www.google.com");
+        List<String> allValidDir = getAllDir(dirList,"https://www.bbc.com", true);
 
         //for(int i = 0; i< allValidDir.size(); i++){
         //    System.out.println(allValidDir.get(i));
@@ -35,7 +35,7 @@ public class webCrawler {
 
     }
 
-    public static List<String> getAllDir(List<String> dictionary, String website){
+    public static List<String> getAllDir(List<String> dictionary, String website, boolean getSubDir){
 
         List<String> output = new ArrayList<>();
 
@@ -43,6 +43,10 @@ public class webCrawler {
             if(getDirExists(website, dictionary.get(i))){
                 System.out.println(website + "/"+dictionary.get(i));
                 output.add(dictionary.get(i));
+
+                if(getSubDir){
+                    output.addAll(getAllDir(dictionary, website+"/"+dictionary.get(i), true));
+                }
             }
         }
 
