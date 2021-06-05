@@ -45,7 +45,7 @@ public class websiteIndexer {
         boolean searchSubBool = false;
         if (searchSub.equals("y")) searchSubBool = true;
 
-        List<String> allValidDir = getAllDir(dirList,websiteInput, searchSubBool, false, 0);
+        List<String> allValidDir = getAllDir(dirList,websiteInput, searchSubBool,  0);
 
         //for(int i = 0; i< allValidDir.size(); i++){
         //    System.out.println(allValidDir.get(i));
@@ -57,13 +57,11 @@ public class websiteIndexer {
 
     }
 
-    public static List<String> getAllDir(List<String> dictionary, String website, boolean getSubDir, boolean recursion, int countDeep){
+    public static List<String> getAllDir(List<String> dictionary, String website, boolean getSubDir,  int countDeep){
 
         List<String> output = new ArrayList<>();
 
-        if (recursion) countDeep +=1;
         if (countDeep >10) {
-            countDeep = 0;
             return output;
         }
 
@@ -79,7 +77,7 @@ public class websiteIndexer {
                     //System.out.println(x);
 
                     if (getSubDir) {
-                        output.addAll(getAllDir(dictionary, website + "/" + dictionary.get(i), true, true, countDeep));
+                        output.addAll(getAllDir(dictionary, website + "/" + dictionary.get(i), true, countDeep+1));
                     }
                 }
             }
