@@ -23,7 +23,8 @@ public class webCrawler {
         //    System.out.println(dirList.get(i));
         //}
 
-        List<String> dirList = getFile("C:/Users/Nathan/Downloads/directory-list-2.3-big.txt");
+        //C:/Users/Nathan/Downloads/
+        List<String> dirList = getFile("src/directory-list-2.3-big.txt");
 
         System.out.println("Enter a website URL (include https://):");
         String websiteInput = new Scanner(System.in).nextLine();
@@ -48,15 +49,20 @@ public class webCrawler {
 
         List<String> output = new ArrayList<>();
 
-        for (int i = 0; i < dictionary.size(); i++){
-            if(getDirExists(website, dictionary.get(i))){
-                System.out.println(website + "/"+dictionary.get(i));
-                output.add(dictionary.get(i));
+        if(dictionary != null) {
+            for (int i = 0; i < dictionary.size(); i++) {
+                if (getDirExists(website, dictionary.get(i))) {
+                    System.out.println(website + "/" + dictionary.get(i));
+                    output.add(dictionary.get(i));
 
-                if(getSubDir){
-                    output.addAll(getAllDir(dictionary, website+"/"+dictionary.get(i), true));
+                    if (getSubDir) {
+                        output.addAll(getAllDir(dictionary, website + "/" + dictionary.get(i), true));
+                    }
                 }
             }
+        }
+        else{
+            System.out.println("Empty Dictionary");
         }
 
         return output;
