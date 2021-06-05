@@ -24,7 +24,18 @@ public class webCrawler {
         //}
 
         //C:/Users/Nathan/Downloads/
-        List<String> dirList = getFile("src/directory-list-2.3-big.txt");
+
+        System.out.println("Small(s), Medium(m) or Big(b)");
+        String dictionaryPathInput = new Scanner(System.in).nextLine();
+        String dictionaryPath = "src/directory-list-2.3-big.txt";
+        if(dictionaryPathInput.equals("s")){
+            dictionaryPath = "src/directory-list-2.3-small.txt";
+        }
+        else if(dictionaryPathInput.equals("m")){
+            dictionaryPath = "src/directory-list-2.3-medium.txt";
+        }
+
+        List<String> dirList = getFile(dictionaryPath);
 
         System.out.println("Enter a website URL (include https://):");
         String websiteInput = new Scanner(System.in).nextLine();
