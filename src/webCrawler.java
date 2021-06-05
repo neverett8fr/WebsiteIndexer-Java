@@ -25,10 +25,15 @@ public class webCrawler {
 
         List<String> dirList = getFile("C:/Users/Nathan/Downloads/directory-list-2.3-big.txt");
 
-        System.out.println("Enter a website URL:");
+        System.out.println("Enter a website URL (include https://):");
         String websiteInput = new Scanner(System.in).nextLine();
 
-        List<String> allValidDir = getAllDir(dirList,websiteInput, true);
+        System.out.println("Search subdirectories (y/n):");
+        String searchSub = new Scanner(System.in).nextLine();
+        boolean searchSubBool = false;
+        if (searchSub.equals("y")) searchSubBool = true;
+
+        List<String> allValidDir = getAllDir(dirList,websiteInput, searchSubBool);
 
         //for(int i = 0; i< allValidDir.size(); i++){
         //    System.out.println(allValidDir.get(i));
