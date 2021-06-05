@@ -45,7 +45,7 @@ public class webCrawler {
         boolean searchSubBool = false;
         if (searchSub.equals("y")) searchSubBool = true;
 
-        List<String> allValidDir = getAllDir(dirList,websiteInput, searchSubBool);
+        List<String> allValidDir = getAllDir(dirList,websiteInput, searchSubBool, false, 0);
 
         //for(int i = 0; i< allValidDir.size(); i++){
         //    System.out.println(allValidDir.get(i));
@@ -57,9 +57,15 @@ public class webCrawler {
 
     }
 
-    public static List<String> getAllDir(List<String> dictionary, String website, boolean getSubDir){
+    public static List<String> getAllDir(List<String> dictionary, String website, boolean getSubDir, boolean recursion, int countDeep){
 
         List<String> output = new ArrayList<>();
+
+        if (recursion) countDeep +=1;
+        if (countDeep >10) {
+            countDeep = 0;
+            return output;
+        }
 
         if(dictionary != null) {
             for (int i = 0; i < dictionary.size(); i++) {
@@ -68,7 +74,7 @@ public class webCrawler {
                     output.add(dictionary.get(i));
 
                     if (getSubDir) {
-                        output.addAll(getAllDir(dictionary, website + "/" + dictionary.get(i), true));
+                        output.addAll(getAllDir(dictionary, website + "/" + dictionary.get(i), true, true, countDeep));
                     }
                 }
             }
