@@ -1,3 +1,4 @@
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -10,6 +11,8 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class websiteIndexer {
+
+
     public static void main(String args[])
     {
         //"C:/Users/Nathan/Downloads/directory-list-2.3-big.txt"
@@ -24,6 +27,7 @@ public class websiteIndexer {
         //}
 
         //C:/Users/Nathan/Downloads/
+
 
         System.out.println("Small(s), Medium(m) or Big(b)");
         String dictionaryPathInput = new Scanner(System.in).nextLine();
@@ -65,8 +69,15 @@ public class websiteIndexer {
             return output;
         }
 
+        int count = 0;
         if(dictionary != null) {
             for (int i = 0; i < dictionary.size(); i++) {
+                count+=1;
+                if (count >=50){
+                    count = 0;
+                    System.out.println("Progress: " + String.format("%,.4f",(100.00/dictionary.size())*i) + "%");
+                }
+
                 if (getDirExists(website, dictionary.get(i))) {
                     System.out.println(website + "/" + dictionary.get(i));
                     output.add(dictionary.get(i));
