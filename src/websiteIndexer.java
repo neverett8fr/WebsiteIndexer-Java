@@ -96,7 +96,8 @@ public class websiteIndexer {
             URL urlTest = new URL(base + "/" + dir);
 
             HttpURLConnection connection =  (HttpURLConnection)  urlTest.openConnection();
-            connection.setRequestMethod("HEAD");
+            //connection.setRequestMethod("HEAD");
+            connection.setRequestMethod("GET");
             connection.connect();
 
             if (connection.getResponseCode() == 200){
