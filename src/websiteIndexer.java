@@ -29,7 +29,7 @@ public class websiteIndexer {
         //C:/Users/Nathan/Downloads/
 
 
-        System.out.println("Small(s), Medium(m) or Big(b)");
+        System.out.println("Small(s), Medium(m) or Big(b) -- quick(q)");
         String dictionaryPathInput = new Scanner(System.in).nextLine();
         String dictionaryPath = "src/directory-list-2.3-big.txt";
         if(dictionaryPathInput.equals("s")){
@@ -37,6 +37,9 @@ public class websiteIndexer {
         }
         else if(dictionaryPathInput.equals("m")){
             dictionaryPath = "src/directory-list-2.3-medium.txt";
+        }
+        else if(dictionaryPathInput.equals("q")){
+            dictionaryPath = "src/super-quick.txt";
         }
 
         List<String> dirList = getFile(dictionaryPath);
