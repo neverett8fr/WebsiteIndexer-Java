@@ -83,7 +83,7 @@ public class websiteIndexer {
 
                 if (getDirExists(website, dictionary.get(i))) {
                     System.out.println(website + "/" + dictionary.get(i));
-                    output.add(dictionary.get(i));
+                    output.add(website + "/" + dictionary.get(i));
 
                     //float x = 100;
                     //x=x/dictionary.size();
